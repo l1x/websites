@@ -1,0 +1,106 @@
+
+.menu-root{
+  display: flex;
+  flex: 1;
+}
+
+.menu-root:after {
+  content: "";
+  background: repeating-linear-gradient(
+    90deg,
+    #ffa86a,
+    #ffa86a 2px,
+    transparent 0,
+    transparent 10px
+  );
+  display: block;
+  width: 100%;
+  right: 10px;
+}
+
+h2:after {
+  content: "";
+  position: relative;
+  bottom: 2px;
+  display: block;
+  width: 960px;
+  border-bottom: 3px dotted #ffa86a;
+}
+
+body {
+  background:
+    radial-gradient(rgba(152, 152, 152, 0.285) 3px, transparent 4px),
+    radial-gradient(rgba(71, 71, 71, 0.326) 3px, transparent 4px),
+    linear-gradient(rgba(255, 255, 255, 0.833) 4px, transparent 0),
+    linear-gradient(
+      45deg, 
+      transparent 74px, 
+      transparent 75px, 
+      #a4a4a4c5 75px, 
+      #a4a4a4b7 76px, 
+      transparent 77px, 
+      transparent 109px),
+    linear-gradient(
+      -45deg, 
+      transparent 75px, 
+      transparent 76px, 
+      #a4a4a44a 76px, 
+      #a4a4a439 77px, 
+      transparent 78px, 
+      transparent 109px),
+    #fff;
+    background-size: 
+      109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+    background-position: 
+      54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+/* 
+main {
+  background: white;
+} */
+
+
+body {
+  --easing: ease-in-out; 
+  
+  --vis: (
+    :doodle { 
+      @grid: 60x1 / 60vmin; 
+      padding: 5vmin;
+      box-sizing: border-box;
+      background: #5622b33e;
+      box-shadow: 0 0 8vmin #0005;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(8px);
+      z-index: 1;
+    }
+
+    @size: calc(1px + .7vmin); 
+    border-radius: 50%;
+    background: hsl(calc(100 + @i * 5), 70%, 70%);
+
+    position: absolute;
+    left: calc(100% / @s * @i);
+    top: 100%;
+
+    @keyframes p { to { top: 0 } }
+    animation: 
+      p 100s calc((100s / @s) * (1 - @i))
+      paused @var(--easing);
+  );
+  
+  --bg: (
+    :doodle {
+      @size: 100vmax; 
+      box-shadow: none;
+      background: #1e054a;
+      z-index: 0;
+      padding: 0;
+    }
+    transform: translate(-50%, -50%);
+    @size: 1px 30vmax; 
+    opacity: .6;
+  );
+}

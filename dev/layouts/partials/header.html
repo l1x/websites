@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+{{ $tachyons := resources.Get "css/tachyons.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $tachyons.RelPermalink }}">
+
+{{ $style := resources.Get "css/style.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+{{ block "title" . }}
+    {{- if .Title -}}
+    <title>{{ .Title | htmlEscape }} | {{ .Site.Title }}</title>
+    {{ else }}
+    <title>{{ .Site.Title }}</title>
+    {{ end }}
+{{ end }}
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>

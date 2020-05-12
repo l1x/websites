@@ -1,0 +1,11 @@
+title = "Istvan's Website"
+baseURL = "https://www.l1x.be/"
+languageCode = "en-us"
+
+disableKinds = [
+  "taxonomy", "taxonomyTerm"
+]
+
+
+
+
