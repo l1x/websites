@@ -1,3 +1,30 @@
 baseURL = "http://dev.l1x.be/"
 languageCode = "en-us"
-title = "Istvan's dev blog"
+title = "l1x/dev"
+removepathaccents = true
+preserveTaxonomyNames = true
+paginate = 5
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "manni"
+    tabWidth = 2
+
+[permalinks]
+  posts = "/posts/:year/:month/:day/:slug/"
+  projects = "/project/:slug/"
+  page = "/:slug/"
+
+[params]
+  contentTypeName = "posts"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

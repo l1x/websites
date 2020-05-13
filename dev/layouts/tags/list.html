@@ -1,0 +1,12 @@
+{{ define "main"}}
+  {{ .Content }}
+  <section >
+    <h2>Tags</h2>
+    <ul>
+      {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
+      <li> <a href={{ .RelPermalink }}> {{ .Title }} </a> </li>
+      {{end}}
+    </ul>
+  </section>
+{{ end }}
+

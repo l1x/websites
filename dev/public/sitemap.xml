@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/beam/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/elixir/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/erlang/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/hello/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/about/</loc>
+    <lastmod>2020-05-12T22:02:43+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/</loc>
+    <lastmod>2020-05-12T22:02:43+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/categories/</loc>
+  </url>
+  
+</urlset>

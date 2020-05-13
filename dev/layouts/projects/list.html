@@ -1,0 +1,21 @@
+{{ define "main"}}
+
+{{ .Content }}
+
+<div class="posts-and-projects mw9 mw8-ns center ph3-ns bg-white">
+  <section>
+    <h1 class="underline dark-gray">Projects</h1>
+
+    <div class="f3 lh-copy">
+      The projects I have been working on:
+    </div>
+
+    <ul class="list pl0">
+      {{- range first 10 (where .Site.RegularPages "Section" "projects") -}}
+      <li> <a href={{ .RelPermalink }} class="link dim dark-gray f3"> {{ .Title }} :: {{ .Description }} </a> </li>
+      {{end}}
+    </ul>
+  </section>
+</div>
+
+{{ end }}

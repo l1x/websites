@@ -62,3 +62,5 @@ I moved up north for few years before I came back to the EU.
 Back home, doing consultancy work mostly in Germany and Luxembourg.
 
 ![Europe](/img/lux.jpg)
+
+This is all!

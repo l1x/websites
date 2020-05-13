@@ -4,10 +4,13 @@
     {{ partial "header" . }}
     {{ partial "icons" . }}
   </head>
-<body class="body">
-  
+<body class="body bg-near-white">
+
   {{ partial "menu" . }}
-  {{ partial "main" . }}
+
+  {{ block "main" . }} 
+    <!-- ez egy block -->
+  {{ end }}
 
 </body>
 {{ partial "footer" . }}
