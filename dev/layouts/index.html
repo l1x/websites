@@ -12,10 +12,13 @@
       </div>
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
-        <li>
+        <li class="pb2">
           <a href={{ .RelPermalink }} class="link dim dark-gray f3 lh-copy"> 
             {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
-          </a> 
+          </a>
+          <div class="pt1">
+            #{{ delimit .Params.tags " #" }}
+          </div> 
         </li>
         {{end}}
       </ul>
@@ -32,7 +35,14 @@
 
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "projects") -}}
-        <li> <a href={{ .RelPermalink }} class="link dim dark-gray f3"> {{ .Title }} :: {{ .Description }} </a> </li>
+        <li class="pb2"> 
+          <a href={{ .RelPermalink }} class="link dim dark-gray f3"> 
+            {{ .Title }} :: {{ .Description }} 
+          </a>
+          <div class="pt1">
+            #{{ delimit .Params.tags " #" }}
+          </div> 
+        </li>
         {{end}}
       </ul>
     </section>

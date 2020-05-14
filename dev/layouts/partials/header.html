@@ -11,8 +11,12 @@
 
 {{ block "title" . }}
     {{- if .Title -}}
-    <title>{{ .Title | htmlEscape }} | {{ .Site.Title }}</title>
+        {{ if eq .Title .Site.Title }}
+            <title>{{ .Site.Title }}</title>
+        {{ else }}
+            <title>{{ .Site.Title }} | {{ .Title | htmlEscape }} </title>
+        {{ end }}
     {{ else }}
-    <title>{{ .Site.Title }}</title>
+        <title>{{ .Site.Title }}</title>
     {{ end }}
 {{ end }}

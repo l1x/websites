@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud on l1x/dev</title>
+    <link>http://dev.l1x.be/tags/cloud/</link>
+    <description>Recent content in cloud on l1x/dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 May 2020 14:31:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://dev.l1x.be/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CloudClamp</title>
+      <link>http://dev.l1x.be/project/cloudclamp/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/project/cloudclamp/</guid>
+      <description>CloudClamp </description>
+    </item>
+    
+  </channel>
+</rss>

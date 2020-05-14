@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>l1x/dev</title>
+    <title>Posts on l1x/dev</title>
     <link>http://dev.l1x.be/posts/</link>
-    <description>Recent content on l1x/dev</description>
+    <description>Recent content in Posts on l1x/dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 May 2020 14:31:21 +0200</lastBuildDate>
@@ -12,12 +12,24 @@
     
     
     <item>
-      <title>O hai</title>
-      <link>http://dev.l1x.be/posts/hello/</link>
+      <title>Moving to Hugo</title>
+      <link>http://dev.l1x.be/posts/2020/05/12/moving-to-hugo/</link>
       <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
       
-      <guid>http://dev.l1x.be/posts/hello/</guid>
-      <description>Lofasz </description>
+      <guid>http://dev.l1x.be/posts/2020/05/12/moving-to-hugo/</guid>
+      <description>Moving to Hugo After many years on Jekyll I think the time is right to move to Hugo.
+?? </description>
+    </item>
+    
+    <item>
+      <title>Matching binary patterns</title>
+      <link>http://dev.l1x.be/posts/2020/04/29/matching-binary-patterns/</link>
+      <pubDate>Wed, 29 Apr 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/posts/2020/04/29/matching-binary-patterns/</guid>
+      <description>Matching binary patterns In Erlang, it is easy to construct binaries and bitstrings and matching binary patterns. I was running into Mitchell Perilstein&amp;rsquo;s excellent work on NTP with Erlang and I thought I am going to use this to explain how bitstrings and binaries work in Erlang.
+Two concepts:
+  A bitstring is a sequence of zero or more bits, where the number of bits does not need to be divisible by 8.</description>
     </item>
     
   </channel>

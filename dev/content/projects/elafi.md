@@ -11,22 +11,29 @@ tags:
 
 # Elixir Ads Filter (ελάφι)
 
-https://en.wiktionary.org/wiki/ελάφι#Greek
+[ελάφι](https://en.wiktionary.org/wiki/ελάφι#Greek)
+
+## What is this?
+
+Elafi is a DNS proxy that filters out unwanted content by returning 0.0.0.0 to the A and ::/0 to AAAA requests that try to resolve ad/spam/malware domains.
+
+In my home network this is roughly 10 - 30% of traffic depending on the part of the day and what devices are active. I find it outrageous that I have to look at ads on a device that I purchased, using my internet connection that I paid for and spend CPU time (producing CO2) to look at completely irrelevant ads, sometimes even malware installers.
+
+I really like Pihole but it has more dependencies that I am comfortable with (dnsmasq, lighttpd, php, Bootstrap 3.x, etc.).
 
 ## Apps
 
-- dnsauth: authoritative nameserver, for lan
+The apps currently starting up with Elafi:
+
 - dnscache: dns proxy and recursive resolver
+- dnsauth: authoritative nameserver, for lan
 - shades: blacklist/whitelist
 - webui: settings & monitoring
-
-## Motivation
-
-Fighting ads supposed to be more accessible. I really like Pihole but it has more dependencies that I am comfortable with (dnsmasq, lighttpd, php, Bootstrap 3.x, etc.).
+- dataz: data access using Mnesia
 
 ## Dependecies
 
-I try to not to use any dependecies. Esqlite is a NIF based library. It might be worth to start up as a separate application.
+I try to not to use any dependecies. 
 
 ```Elixir
   defp deps do
@@ -40,20 +47,7 @@ I try to not to use any dependecies. Esqlite is a NIF based library. It might be
 
 This is the current flow of incoming DNS packets:
 
-```mermaid
-graph TD
-A[UDP Packet] --> B(< 513)
-B(< 513) -->|Y| C(Whitelist?)
-B(< 513) -->|N| D[Error]
-C(Whitelist?) -->|Y| E(Local?)
-C(Whitelist?) -->|N| F(Blacklist?)
-F(Blacklist?) --> |Y| G[0.0.0.0]
-F(Blacklist?) --> |N| E(Local?)
-E(Local?) -->|Y| H[Local Authoritative]
-E(Local?) -->|N| I(Forward)
-I(Forward) -->|Y| J[Forward Query To Upstream]
-J[Forward Query To Upstream] --> K[Send Response to Requester]
-```
+![Dns Proxy Flow](/img/elafi_dns_proxy_flow.png)
 
 [Link](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbVURQIFBhY2tldF0gLS0-IEIoPCA1MTMpXG5CKDwgNTEzKSAtLT58WXwgQyhXaGl0ZWxpc3Q_KVxuQig8IDUxMykgLS0-fE58IERbRXJyb3JdXG5DKFdoaXRlbGlzdD8pIC0tPnxZfCBFKExvY2FsPylcbkMoV2hpdGVsaXN0PykgLS0-fE58IEYoQmxhY2tsaXN0PylcbkYoQmxhY2tsaXN0PykgLS0-IHxZfCBHWzAuMC4wLjBdXG5GKEJsYWNrbGlzdD8pIC0tPiB8TnwgRShMb2NhbD8pXG5FKExvY2FsPykgLS0-fFl8IEhbTG9jYWwgQXV0aG9yaXRhdGl2ZV1cbkUoTG9jYWw_KSAtLT58TnwgSShGb3J3YXJkKVxuSShGb3J3YXJkKSAtLT58WXwgSltGb3J3YXJkIFF1ZXJ5IFRvIFVwc3RyZWFtXVxuSltGb3J3YXJkIFF1ZXJ5IFRvIFVwc3RyZWFtXSAtLT4gS1tTZW5kIFJlc3BvbnNlIHRvIFJlcXVlc3Rlcl1cbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
