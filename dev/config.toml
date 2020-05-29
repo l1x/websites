@@ -5,6 +5,19 @@ removepathaccents = true
 preserveTaxonomyNames = true
 paginate = 5
 
+[params]
+  contentTypeName = "posts"
+  description = "Thoughts on DevOps, Unix, Erlang, Fsharp, big Data and high performance topics by l1x"
+
+[permalinks]
+  posts = "/posts/:year/:month/:day/:slug/"
+  projects = "/project/:slug/"
+  page = "/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  
 [markup]
   [markup.highlight]
     codeFences = true
@@ -17,14 +30,3 @@ paginate = 5
     style = "manni"
     tabWidth = 2
 
-[permalinks]
-  posts = "/posts/:year/:month/:day/:slug/"
-  projects = "/project/:slug/"
-  page = "/:slug/"
-
-[params]
-  contentTypeName = "posts"
-
-[taxonomies]
-  tag = "tags"
-  category = "categories"

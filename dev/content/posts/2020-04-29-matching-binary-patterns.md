@@ -2,10 +2,12 @@
 title: "Matching binary patterns"
 date: 2020-04-29T14:31:21+02:00
 description: "Using binary pattern matching for working with network protocols"
+ogimage: "/img/elafi_logo.png"
 tags:
     - erlang
     - beam
     - elixir
+draft: false
 ---
 # Matching binary patterns
 

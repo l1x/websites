@@ -1,7 +1,5 @@
 {{ define "main"}}
 
-  {{ .Content }}
-
   <div class="posts-and-projects mw9 mw8-ns center ph3-ns bg-white">
     <section>
       <h1 class="underline dark-gray lh-copy">
@@ -34,7 +32,7 @@
       </div>
 
       <ul class="list pl0">
-        {{- range first 10 (where .Site.RegularPages "Section" "projects") -}}
+        {{- range first 10 (where .Site.RegularPages "Section" "projects").ByDate -}}
         <li class="pb2"> 
           <a href={{ .RelPermalink }} class="link dim dark-gray f3"> 
             {{ .Title }} :: {{ .Description }} 
