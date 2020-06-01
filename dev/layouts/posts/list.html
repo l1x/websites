@@ -2,24 +2,26 @@
 
 {{ .Content }}
 
-<div class="posts-and-projects mw9 mw8-ns center ph3-ns bg-white">
-  <section>
-    <h1 class="underline dark-gray lh-copy">Posts</h1>
-    <div class="f3 lh-copy">
-      The posts I have written:
-    </div>
-
-    <ul class="list pl0">
-      {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
-      <li>
-        <a href={{ .RelPermalink }} class="link dim dark-gray f3 lh-copy"> 
-          {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
-        </a> 
-      </li>
-      {{end}}
-    </ul>
-  </section>
-</div>
+<section>
+  <h1>
+    <a href="/posts" class="title link">Posts</a>
+  </h1>
+  <div class="f3 lh-copy">
+    The posts I have written:
+  </div>
+  <ul class="list pl0">
+    {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
+    <li class="pb2">
+      <a href={{ .RelPermalink }} class=""> 
+        {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
+      </a>
+      <div class="pt1">
+        #{{ delimit .Params.tags " #" }}
+      </div> 
+    </li>
+    {{end}}
+  </ul>
+</section>
 
 {{ end }}
 

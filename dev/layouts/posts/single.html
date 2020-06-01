@@ -1,6 +1,14 @@
 {{ define "main"}}
   
-  <div class="mw9 mw8-ns center ph3-ns bg-white f5 dark-gray">
+  {{- if .Title -}}
+    <h2 class="post-title"> {{ .Title | htmlEscape }} </h2>
+  {{ end }}
+
+  {{- if .Date -}}
+    <div class="white"> {{ dateFormat "2006/01/02" .Date }} | #{{ delimit .Params.tags " #" }} </div> 
+  {{ end }}
+
+  <div class="">
     {{ .Content }}
   </div>
 

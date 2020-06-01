@@ -1,17 +1,17 @@
 {{ define "main"}}
 
-  <div class="posts-and-projects mw9 mw8-ns center ph3-ns bg-white">
+  <div class="">
     <section>
-      <h1 class="underline dark-gray lh-copy">
-        <a href="/posts" class="link dim dark-gray f2 lh-copy">Posts</a>
-      </h1>
-      <div class="f3 lh-copy">
+      <h2>
+        <a href="/posts" class="title link">Posts</a>
+      </h2>
+      <div class="f3">
         The posts I have written:
       </div>
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
         <li class="pb2">
-          <a href={{ .RelPermalink }} class="link dim dark-gray f3 lh-copy"> 
+          <a href={{ .RelPermalink }} class="link dim"> 
             {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
           </a>
           <div class="pt1">
@@ -23,18 +23,18 @@
     </section>
     
     <section>
-      <h1 class="underline dark-gray lh-copy">
-        <a href="/projects" class="link dim dark-gray f2 lh-copy">Projects</a>
-      </h1>
+      <h2>
+        <a href="/projects" class="title link">Projects</a>
+      </h2>
 
-      <div class="f3 lh-copy">
+      <div class="f3">
         The projects I have been working on:
       </div>
 
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "projects").ByDate -}}
         <li class="pb2"> 
-          <a href={{ .RelPermalink }} class="link dim dark-gray f3"> 
+          <a href={{ .RelPermalink }} class="link dim"> 
             {{ .Title }} :: {{ .Description }} 
           </a>
           <div class="pt1">

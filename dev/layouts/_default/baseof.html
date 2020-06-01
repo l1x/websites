@@ -10,14 +10,16 @@
     {{ partial "icons" . }}
     {{ partial "og" . }}
   </head>
-<body class="body bg-near-white">
+  
+<body>
 
-  {{ partial "menu" . }}
+  <div class="content mw8-l center">
+    {{ partial "menu" . }}
 
-  {{ block "main" . }} 
+    {{ block "main" . }} 
     
-  {{ end }}
-
+    {{ end }}
+  </div>
 </body>
 {{ partial "footer" . }}
 </html>

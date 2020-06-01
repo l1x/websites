@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/webfonts/dosis.300.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/webfonts/dosis.400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/webfonts/dosis.700.ttf) format('truetype');
+}

@@ -1,8 +1,14 @@
+{{ $dosis := resources.Get "css/dosis.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $dosis.RelPermalink }}">
+
 {{ $tachyons := resources.Get "css/tachyons.css" | resources.Minify }}
 <link rel="stylesheet" href="{{ $tachyons.RelPermalink }}">
 
 {{ $style := resources.Get "css/style.css" | resources.Minify }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+{{ $fontawesome := resources.Get "css/fontawesome.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $fontawesome.RelPermalink }}">
 
 {{ block "title" . }}
     {{- if .Title -}}

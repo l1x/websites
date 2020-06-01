@@ -27,6 +27,6 @@ paginate = 5
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "manni"
+    style = "fruity"
     tabWidth = 2
 
