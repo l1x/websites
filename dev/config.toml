@@ -16,7 +16,6 @@ paginate = 5
 
 [taxonomies]
   tag = "tags"
-  category = "categories"
   
 [markup]
   [markup.highlight]
@@ -27,6 +26,6 @@ paginate = 5
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "fruity"
+    style = "native"
     tabWidth = 2
 
