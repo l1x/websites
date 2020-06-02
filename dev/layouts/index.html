@@ -13,11 +13,14 @@
             {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
           </a>
           <div class="pt1">
-            #{{ delimit .Params.tags " #" }}
+            {{ range .Params.tags }}
+              <a href="/tags/{{ . }}" class="link dim">#{{ . }}</a>
+            {{ end}}
           </div> 
         </li>
         {{end}}
       </ul>
+
     </section>
     
     <section class="">
@@ -33,7 +36,9 @@
             {{ .Title }} :: {{ .Description }} 
           </a>
           <div class="pt1">
-            #{{ delimit .Params.tags " #" }}
+            {{ range .Params.tags }}
+              <a href="/tags/{{ . }}" class="link dim">#{{ . }}</a>
+            {{ end}}
           </div> 
         </li>
         {{end}}

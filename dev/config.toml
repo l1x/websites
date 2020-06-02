@@ -1,4 +1,4 @@
-baseURL = "http://dev.l1x.be/"
+baseURL = "https://dev.l1x.be/"
 languageCode = "en-us"
 title = "l1x/dev"
 removepathaccents = true
