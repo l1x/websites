@@ -1,153 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta charset=utf-8><link rel=stylesheet href=/css/dosis.min.css><link rel=stylesheet href=/css/tachyons.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/css/fontawesome.min.css><title>l1x/dev | CloudClamp</title><link rel=apple-touch-icon sizes=180x180 href=/img/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/img/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/favicon-16x16.png><link rel=apple-touch-icon sizes=57x57 href=/img/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/img/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/img/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/img/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/img/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/img/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/img/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/img/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/img/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/img/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/img/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/img/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/img/favicon-16x16.png><meta name=image property="og:image" content><meta name=title property="og:title" content="CloudClamp"><meta name=description property="og:description" content="Type safe infrastructure as code"><meta name=type property="og:type" content="article"><meta name=url property="og:url" content="http://dev.l1x.be/projects/cloudclamp/"><meta name=author content="l1x"></head><body><div class="content mw8-l center pl4"><header class="flex mw8-l center pt4"><div class=pt3><img src=/img/apple-touch-icon.png width=60></div><a href=/ class="title link pl3 pt2"><h1>l1x/dev</h1></a></header><div><h1 id=cloudclamp>CloudClamp</h1><p>Type safe infrastructure as code with the full power of F#.</p><h2 id=why>Why?</h2><p>I am tired of dealing with configuration files and interpreters that has the expresiveness of Go, safetiness of C and performance of Ruby. Illegal configuration must be made impossible by the type system. ADTs are great for this. Compilation has to check as much as possible and using all language features is a must. C# has libraries for pretty much every single vendor out there or it is trivial to implement the lacking support. There is a giant community of senior software engineers available on StackOverflow or LinkedIN. Debugging and performance tracing is largely solved.</p><h2 id=usage>Usage</h2><p>CloudClamp has 3 concepts:</p><ul><li>service (website, hadoop, etcd, yourcustomservice)</li><li>stage (dev, qa, prod, etc.)</li><li>command (show, plan, deploy)</li></ul><div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash>cloudclamp --stage prod --command deploy --service CloudClamp.Website
+</code></pre></div><p>Right now there is no local state but this might change in the future. State must be per service/stage to avoid deployments blocking each other. There is a small amount of configuration in JSON (type safe) to configure basic things. More complex things live in code.</p><h3 id=example-resource-website>Example resource (website)</h3><p>This website uses AWS S3. It only has one stage: prod. The bucket configuration is typed. You cannot accidentally try to create illegal configuration. Possible configurations can be narrowed down by the actual company or department. For example, public buckets can be disabled. Tagging is flexible, you can add more for billing breakdown purposes.</p><div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-Fsharp data-lang=Fsharp>  <span style=color:#999;font-style:italic>// Tags
+</span><span style=color:#999;font-style:italic></span>
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>websiteTags</span> = 
+      [   (<span style=color:#ed9d13>&#34;Name&#34;</span>, <span style=color:#ed9d13>&#34;l1x.be&#34;</span>);   (<span style=color:#ed9d13>&#34;Environment&#34;</span>, <span style=color:#ed9d13>&#34;website&#34;</span>); 
+          (<span style=color:#ed9d13>&#34;Scope&#34;</span>, <span style=color:#ed9d13>&#34;global&#34;</span>);  (<span style=color:#ed9d13>&#34;Stage&#34;</span>, <span style=color:#ed9d13>&#34;prod&#34;</span>);         ]
 
-    
-<link rel="stylesheet" href="/css/dosis.min.css">
-
-
-<link rel="stylesheet" href="/css/tachyons.min.css">
-
-
-<link rel="stylesheet" href="/css/style.min.css">
-
-
-<link rel="stylesheet" href="/css/fontawesome.min.css">
-
-
-            <title>l1x/dev | CloudClamp </title>
-        
-    
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-
-
-    
-  <meta name="image" property="og:image" content=""/>
-
-<meta name="title" property="og:title" content="CloudClamp" />
-<meta name="description" property="og:description" content="Type safe infrastructure as code" />
-<meta name="type" property="og:type" content="article" />
-<meta name="url" property="og:url" content="http://dev.l1x.be/projects/cloudclamp/" />
-<meta name="author" content="l1x">
-  </head>
-  
-<body>
-
-  <div class="content mw8-l center">
-    <header class="flex mw8-l center">
-    
-    <div class="pt3">
-      <img src="/img/apple-touch-icon.png" width="60">
-    </div>
-
-    <a href="/" class="title link pl3">
-      <h1>
-        l1x/dev
-      </h1>
-    </a>
-
-</header>
-
-    
-  
-  <div class="">
-    <h1 id="cloudclamp">CloudClamp</h1>
-<p>Type safe infrastructure as code with the full power of F#.</p>
-<h2 id="why">Why?</h2>
-<p>I am tired of dealing with configuration files and interpreters that has the expresiveness of Go, safetiness of C and performance of Ruby. Illegal configuration must be made impossible by the type system. ADTs are great for this. Compilation has to check as much as possible and using all language features is a must. C# has libraries for pretty much every single vendor out there or it is trivial to implement the lacking support. There is a giant community of senior software engineers available on StackOverflow or LinkedIN. Debugging and performance tracing is largely solved.</p>
-<h2 id="usage">Usage</h2>
-<p>CloudClamp has 3 concepts:</p>
-<ul>
-<li>service (website, hadoop, etcd, yourcustomservice)</li>
-<li>stage (dev, qa, prod, etc.)</li>
-<li>command (show, plan, deploy)</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cloudclamp --stage prod --command deploy --service CloudClamp.Website
-</code></pre></div><p>Right now there is no local state but this might change in the future. State must be per service/stage to avoid deployments blocking each other. There is a small amount of configuration in JSON (type safe) to configure basic things. More complex things live in code.</p>
-<h3 id="example-resource-website">Example resource (website)</h3>
-<p>This website uses AWS S3. It only has one stage: prod. The bucket configuration is typed. You cannot accidentally try to create illegal configuration. Possible configurations can be narrowed down by the actual company or department. For example, public buckets can be disabled. Tagging is flexible, you can add more for billing breakdown purposes.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-Fsharp" data-lang="Fsharp">  <span style="color:#999;font-style:italic">// Tags
-</span><span style="color:#999;font-style:italic"></span>
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">websiteTags</span> = 
-      [   (<span style="color:#ed9d13">&#34;Name&#34;</span>, <span style="color:#ed9d13">&#34;l1x.be&#34;</span>);   (<span style="color:#ed9d13">&#34;Environment&#34;</span>, <span style="color:#ed9d13">&#34;website&#34;</span>); 
-          (<span style="color:#ed9d13">&#34;Scope&#34;</span>, <span style="color:#ed9d13">&#34;global&#34;</span>);  (<span style="color:#ed9d13">&#34;Stage&#34;</span>, <span style="color:#ed9d13">&#34;prod&#34;</span>);         ]
-
-    <span style="color:#999;font-style:italic">// logs.l1x.be
-</span><span style="color:#999;font-style:italic"></span>
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">s3BucketWithConfigLogs</span> = 
+    <span style=color:#999;font-style:italic>// logs.l1x.be
+</span><span style=color:#999;font-style:italic></span>
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>s3BucketWithConfigLogs</span> = 
       createPrivateBucketConfig 
-        <span style="color:#ed9d13">&#34;logs.l1x.be&#34;</span>     <span style="color:#999;font-style:italic">// name
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;eu-west-1&#34;</span>       <span style="color:#999;font-style:italic">// region
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;prod&#34;</span>            <span style="color:#999;font-style:italic">// stage
-</span><span style="color:#999;font-style:italic"></span>        websiteTags       <span style="color:#999;font-style:italic">// tagging
-</span><span style="color:#999;font-style:italic"></span>        None              <span style="color:#999;font-style:italic">// policy
-</span><span style="color:#999;font-style:italic"></span>        None              <span style="color:#999;font-style:italic">// logging
-</span><span style="color:#999;font-style:italic"></span>    
+        <span style=color:#ed9d13>&#34;logs.l1x.be&#34;</span>     <span style=color:#999;font-style:italic>// name
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;eu-west-1&#34;</span>       <span style=color:#999;font-style:italic>// region
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;prod&#34;</span>            <span style=color:#999;font-style:italic>// stage
+</span><span style=color:#999;font-style:italic></span>        websiteTags       <span style=color:#999;font-style:italic>// tagging
+</span><span style=color:#999;font-style:italic></span>        None              <span style=color:#999;font-style:italic>// policy
+</span><span style=color:#999;font-style:italic></span>        None              <span style=color:#999;font-style:italic>// logging
+</span><span style=color:#999;font-style:italic></span>    
     createS3Bucket amazonS3client s3BucketWithConfigLogs |&gt; ignore
     
-    <span style="color:#999;font-style:italic">// dev.l1x.be
-</span><span style="color:#999;font-style:italic"></span>
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">websiteDocuments</span> : WebsiteDocuments = 
-      { IndexDocument = <span style="color:#ed9d13">&#34;index.html&#34;</span>; ErrorDocument = <span style="color:#ed9d13">&#34;error.html&#34;</span>; }  
+    <span style=color:#999;font-style:italic>// dev.l1x.be
+</span><span style=color:#999;font-style:italic></span>
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>websiteDocuments</span> : WebsiteDocuments = 
+      { IndexDocument = <span style=color:#ed9d13>&#34;index.html&#34;</span>; ErrorDocument = <span style=color:#ed9d13>&#34;error.html&#34;</span>; }  
 
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">s3BucketWithConfigDev</span> = 
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>s3BucketWithConfigDev</span> = 
       createWebsiteBucketConfig 
-        <span style="color:#ed9d13">&#34;dev.l1x.be&#34;</span>        <span style="color:#999;font-style:italic">// name
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;eu-west-1&#34;</span>         <span style="color:#999;font-style:italic">// region
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;prod&#34;</span>              <span style="color:#999;font-style:italic">// stage
-</span><span style="color:#999;font-style:italic"></span>        websiteDocuments    <span style="color:#999;font-style:italic">// website
-</span><span style="color:#999;font-style:italic"></span>        websiteTags         <span style="color:#999;font-style:italic">// tagging
-</span><span style="color:#999;font-style:italic"></span>        None                <span style="color:#999;font-style:italic">// policy
-</span><span style="color:#999;font-style:italic"></span>        None                <span style="color:#999;font-style:italic">// logging
-</span><span style="color:#999;font-style:italic"></span>
+        <span style=color:#ed9d13>&#34;dev.l1x.be&#34;</span>        <span style=color:#999;font-style:italic>// name
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;eu-west-1&#34;</span>         <span style=color:#999;font-style:italic>// region
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;prod&#34;</span>              <span style=color:#999;font-style:italic>// stage
+</span><span style=color:#999;font-style:italic></span>        websiteDocuments    <span style=color:#999;font-style:italic>// website
+</span><span style=color:#999;font-style:italic></span>        websiteTags         <span style=color:#999;font-style:italic>// tagging
+</span><span style=color:#999;font-style:italic></span>        None                <span style=color:#999;font-style:italic>// policy
+</span><span style=color:#999;font-style:italic></span>        None                <span style=color:#999;font-style:italic>// logging
+</span><span style=color:#999;font-style:italic></span>
     createS3Bucket amazonS3client s3BucketWithConfigDev |&gt; ignore
     
-    <span style="color:#999;font-style:italic">// redirect l1x.be -&gt; dev.l1x.be
-</span><span style="color:#999;font-style:italic"></span>
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">redirectTo</span> : RedirectOnly = 
-      { RedirectTo = <span style="color:#ed9d13">&#34;dev.l1x.be&#34;</span> }
+    <span style=color:#999;font-style:italic>// redirect l1x.be -&gt; dev.l1x.be
+</span><span style=color:#999;font-style:italic></span>
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>redirectTo</span> : RedirectOnly = 
+      { RedirectTo = <span style=color:#ed9d13>&#34;dev.l1x.be&#34;</span> }
 
-    <span style="color:#6ab825;font-weight:bold">let</span> <span style="color:#40ffff">s3BucketWithConfigApex</span> = 
+    <span style=color:#6ab825;font-weight:700>let</span> <span style=color:#40ffff>s3BucketWithConfigApex</span> = 
       createRedirectBucketConfig 
-        <span style="color:#ed9d13">&#34;l1x.be&#34;</span>          <span style="color:#999;font-style:italic">// name
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;eu-west-1&#34;</span>       <span style="color:#999;font-style:italic">// region
-</span><span style="color:#999;font-style:italic"></span>        <span style="color:#ed9d13">&#34;prod&#34;</span>            <span style="color:#999;font-style:italic">// stage
-</span><span style="color:#999;font-style:italic"></span>        redirectTo        <span style="color:#999;font-style:italic">// website
-</span><span style="color:#999;font-style:italic"></span>        websiteTags       <span style="color:#999;font-style:italic">// tagging
-</span><span style="color:#999;font-style:italic"></span>        None              <span style="color:#999;font-style:italic">// policy
-</span><span style="color:#999;font-style:italic"></span>        None              <span style="color:#999;font-style:italic">// logging
-</span><span style="color:#999;font-style:italic"></span>   
+        <span style=color:#ed9d13>&#34;l1x.be&#34;</span>          <span style=color:#999;font-style:italic>// name
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;eu-west-1&#34;</span>       <span style=color:#999;font-style:italic>// region
+</span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;prod&#34;</span>            <span style=color:#999;font-style:italic>// stage
+</span><span style=color:#999;font-style:italic></span>        redirectTo        <span style=color:#999;font-style:italic>// website
+</span><span style=color:#999;font-style:italic></span>        websiteTags       <span style=color:#999;font-style:italic>// tagging
+</span><span style=color:#999;font-style:italic></span>        None              <span style=color:#999;font-style:italic>// policy
+</span><span style=color:#999;font-style:italic></span>        None              <span style=color:#999;font-style:italic>// logging
+</span><span style=color:#999;font-style:italic></span>   
     createS3Bucket amazonS3client s3BucketWithConfigApex |&gt; ignore
-</code></pre></div><h2 id="cloud-resources">Cloud Resources</h2>
-<h3 id="aws">AWS</h3>
-<h4 id="iam">IAM</h4>
-<h4 id="acm">ACM</h4>
-<h4 id="route53">Route53</h4>
-<h4 id="s3">S3</h4>
-<h6 id="bucket">Bucket</h6>
-<p>Bucket life cycle:</p>
-<pre><code>sequenceDiagram
+</code></pre></div><h2 id=cloud-resources>Cloud Resources</h2><h3 id=aws>AWS</h3><h4 id=iam>IAM</h4><h4 id=acm>ACM</h4><h4 id=route53>Route53</h4><h4 id=s3>S3</h4><h6 id=bucket>Bucket</h6><p>Bucket life cycle:</p><pre><code>sequenceDiagram
     participant I as Initial
     participant N as NonExistent
     participant C as Created
@@ -180,34 +84,4 @@
 
     C--&gt;&gt;N: deleteBucket
     C--&gt;&gt;E: deleteBucket
-</code></pre><p><a href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgSSBhcyBJbml0aWFsXG4gICAgcGFydGljaXBhbnQgTiBhcyBOb25FeGlzdGVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgQ3JlYXRlZFxuICAgIHBhcnRpY2lwYW50IEUgYXMgRXJyXG5cbiAgICBJLT4-QzogZ2V0U3RhdGVcbiAgICBJLT4-RTogZ2V0U3RhdGVcbiAgICBJLT4-TjogZ2V0U3RhdGVcblxuICAgIE4tPj5DOiBwdXRCdWNrZXRcbiAgICBOLT4-RTogcHV0QnVja2V0XG5cbiAgICBDLT4-QzogICBQdXRCdWNrZXRUYWdnaW5nXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0VGFnZ2luZ1xuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRXZWJzaXRlXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0V2Vic2l0ZVxuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRQb2xpY3lcbiAgICBDLT4-RTogICBQdXRCdWNrZXRQb2xpY3lcblxuICAgIEMtLT4-QzogRGVsZXRlQnVja2V0VGFnZ2luZ1xuICAgIEMtLT4-RTogRGVsZXRlQnVja2V0VGFnZ2luZ1xuXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRXZWJzaXRlXG4gICAgQy0tPj5FOiAgRGVsZXRlQnVja2V0V2Vic2l0ZSAgXG4gICAgXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRQb2xpY3lcbiAgICBDLS0-PkU6ICBEZWxldGVCdWNrZXRQb2xpY3kgIFxuXG4gICAgQy0tPj5OOiBkZWxldGVCdWNrZXRcbiAgICBDLS0-PkU6IGRlbGV0ZUJ1Y2tldFxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgSSBhcyBJbml0aWFsXG4gICAgcGFydGljaXBhbnQgTiBhcyBOb25FeGlzdGVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgQ3JlYXRlZFxuICAgIHBhcnRpY2lwYW50IEUgYXMgRXJyXG5cbiAgICBJLT4-QzogZ2V0U3RhdGVcbiAgICBJLT4-RTogZ2V0U3RhdGVcbiAgICBJLT4-TjogZ2V0U3RhdGVcblxuICAgIE4tPj5DOiBwdXRCdWNrZXRcbiAgICBOLT4-RTogcHV0QnVja2V0XG5cbiAgICBDLT4-QzogICBQdXRCdWNrZXRUYWdnaW5nXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0VGFnZ2luZ1xuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRXZWJzaXRlXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0V2Vic2l0ZVxuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRQb2xpY3lcbiAgICBDLT4-RTogICBQdXRCdWNrZXRQb2xpY3lcblxuICAgIEMtLT4-QzogRGVsZXRlQnVja2V0VGFnZ2luZ1xuICAgIEMtLT4-RTogRGVsZXRlQnVja2V0VGFnZ2luZ1xuXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRXZWJzaXRlXG4gICAgQy0tPj5FOiAgRGVsZXRlQnVja2V0V2Vic2l0ZSAgXG4gICAgXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRQb2xpY3lcbiAgICBDLS0-PkU6ICBEZWxldGVCdWNrZXRQb2xpY3kgIFxuXG4gICAgQy0tPj5OOiBkZWxldGVCdWNrZXRcbiAgICBDLS0-PkU6IGRlbGV0ZUJ1Y2tldFxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0" alt=""></a></p>
-<h4 id="api-gateway">Api Gateway</h4>
-<h4 id="lambda">Lambda</h4>
-<h4 id="dynamodb">DynamoDB</h4>
-<h4 id="fargate">Fargate</h4>
-
-  </div>
-
-
-  </div>
-</body>
-<footer class="mw8-l center pa3">
-
-  <a href="https://github.com/l1x" class="pa2">
-    <i class="fab fa-github fa-2x"></i>
-  </a>
-
-  <a href="https://twitter.com/lix" class="pa2">
-    <i class="fab fa-twitter fa-2x"></i>
-  </a>
-
-  <a href="https://www.linkedin.com/in/iszukacs" class="pa2">
-    <i class="fab fa-linkedin fa-2x"></i>
-  </a>
-    
-  <a href="https://dev.to/l1x" class="pa2">
-    <i class="fab fa-dev fa-2x"></i>
-  </a>
-
-</footer>
-</html>
+</code></pre><p><a href=https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgSSBhcyBJbml0aWFsXG4gICAgcGFydGljaXBhbnQgTiBhcyBOb25FeGlzdGVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgQ3JlYXRlZFxuICAgIHBhcnRpY2lwYW50IEUgYXMgRXJyXG5cbiAgICBJLT4-QzogZ2V0U3RhdGVcbiAgICBJLT4-RTogZ2V0U3RhdGVcbiAgICBJLT4-TjogZ2V0U3RhdGVcblxuICAgIE4tPj5DOiBwdXRCdWNrZXRcbiAgICBOLT4-RTogcHV0QnVja2V0XG5cbiAgICBDLT4-QzogICBQdXRCdWNrZXRUYWdnaW5nXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0VGFnZ2luZ1xuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRXZWJzaXRlXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0V2Vic2l0ZVxuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRQb2xpY3lcbiAgICBDLT4-RTogICBQdXRCdWNrZXRQb2xpY3lcblxuICAgIEMtLT4-QzogRGVsZXRlQnVja2V0VGFnZ2luZ1xuICAgIEMtLT4-RTogRGVsZXRlQnVja2V0VGFnZ2luZ1xuXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRXZWJzaXRlXG4gICAgQy0tPj5FOiAgRGVsZXRlQnVja2V0V2Vic2l0ZSAgXG4gICAgXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRQb2xpY3lcbiAgICBDLS0-PkU6ICBEZWxldGVCdWNrZXRQb2xpY3kgIFxuXG4gICAgQy0tPj5OOiBkZWxldGVCdWNrZXRcbiAgICBDLS0-PkU6IGRlbGV0ZUJ1Y2tldFxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0><img src=https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgSSBhcyBJbml0aWFsXG4gICAgcGFydGljaXBhbnQgTiBhcyBOb25FeGlzdGVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgQ3JlYXRlZFxuICAgIHBhcnRpY2lwYW50IEUgYXMgRXJyXG5cbiAgICBJLT4-QzogZ2V0U3RhdGVcbiAgICBJLT4-RTogZ2V0U3RhdGVcbiAgICBJLT4-TjogZ2V0U3RhdGVcblxuICAgIE4tPj5DOiBwdXRCdWNrZXRcbiAgICBOLT4-RTogcHV0QnVja2V0XG5cbiAgICBDLT4-QzogICBQdXRCdWNrZXRUYWdnaW5nXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0VGFnZ2luZ1xuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRXZWJzaXRlXG4gICAgQy0-PkU6ICAgUHV0QnVja2V0V2Vic2l0ZVxuXG4gICAgQy0-PkM6ICBQdXRCdWNrZXRQb2xpY3lcbiAgICBDLT4-RTogICBQdXRCdWNrZXRQb2xpY3lcblxuICAgIEMtLT4-QzogRGVsZXRlQnVja2V0VGFnZ2luZ1xuICAgIEMtLT4-RTogRGVsZXRlQnVja2V0VGFnZ2luZ1xuXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRXZWJzaXRlXG4gICAgQy0tPj5FOiAgRGVsZXRlQnVja2V0V2Vic2l0ZSAgXG4gICAgXG4gICAgQy0tPj5DOiBEZWxldGVCdWNrZXRQb2xpY3lcbiAgICBDLS0-PkU6ICBEZWxldGVCdWNrZXRQb2xpY3kgIFxuXG4gICAgQy0tPj5OOiBkZWxldGVCdWNrZXRcbiAgICBDLS0-PkU6IGRlbGV0ZUJ1Y2tldFxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0 alt></a></p><h4 id=api-gateway>Api Gateway</h4><h4 id=lambda>Lambda</h4><h4 id=dynamodb>DynamoDB</h4><h4 id=fargate>Fargate</h4></div></div></body><footer class="mw8-l center pa4"><a href=https://github.com/l1x class=pa2><i class="fab fa-github fa-2x"></i></a><a href=https://twitter.com/lix class=pa2><i class="fab fa-twitter fa-2x"></i></a><a href=https://www.linkedin.com/in/iszukacs class=pa2><i class="fab fa-linkedin fa-2x"></i></a><a href=https://dev.to/l1x class=pa2><i class="fab fa-dev fa-2x"></i></a></footer></html>
