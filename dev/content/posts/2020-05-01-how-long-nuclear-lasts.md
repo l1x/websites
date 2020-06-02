@@ -1,6 +1,6 @@
 ---
 title: "How long will the world’s uranium supplies last?"
-date: 2020-06-01T14:31:21+02:00
+date: 2020-05-01T14:31:21+02:00
 description: "How long will the world’s uranium supplies last?"
 ogimage: "/img/nuclear.jpg"
 tags:
@@ -8,10 +8,6 @@ tags:
     - energy
 draft: false
 ---
-
-
-How long will the world’s uranium supplies last?
-
 
 ## Basics
 

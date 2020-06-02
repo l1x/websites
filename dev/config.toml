@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "l1x/dev"
 removepathaccents = true
 preserveTaxonomyNames = true
-paginate = 5
+paginate = 10
 
 [params]
   contentTypeName = "posts"
@@ -11,7 +11,7 @@ paginate = 5
 
 [permalinks]
   posts = "/posts/:year/:month/:day/:slug/"
-  projects = "/project/:slug/"
+  projects = "/projects/:slug/"
   page = "/:slug/"
 
 [taxonomies]

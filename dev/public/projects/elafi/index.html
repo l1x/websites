@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    
+<link rel="stylesheet" href="/css/dosis.min.css">
+
+
+<link rel="stylesheet" href="/css/tachyons.min.css">
+
+
+<link rel="stylesheet" href="/css/style.min.css">
+
+
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+
+            <title>l1x/dev | Elafi </title>
+        
+    
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+
+
+    
+  <meta name="image" property="og:image" content=""/>
+
+<meta name="title" property="og:title" content="Elafi" />
+<meta name="description" property="og:description" content="Elixir Ad Filter" />
+<meta name="type" property="og:type" content="article" />
+<meta name="url" property="og:url" content="http://dev.l1x.be/projects/elafi/" />
+<meta name="author" content="l1x">
+  </head>
+  
+<body>
+
+  <div class="content mw8-l center">
+    <header class="flex mw8-l center">
+    
+    <div class="pt3">
+      <img src="/img/apple-touch-icon.png" width="60">
+    </div>
+
+    <a href="/" class="title link pl3">
+      <h1>
+        l1x/dev
+      </h1>
+    </a>
+
+</header>
+
+    
+  
+  <div class="">
+    <h1 id="elixir-ads-filter-ελάφι">Elixir Ads Filter (ελάφι)</h1>
+<p><a href="https://en.wiktionary.org/wiki/%CE%B5%CE%BB%CE%AC%CF%86%CE%B9#Greek">ελάφι</a></p>
+<h2 id="what-is-this">What is this?</h2>
+<p>Elafi is a DNS proxy that filters out unwanted content by returning 0.0.0.0 to the A and ::/0 to AAAA requests that try to resolve ad/spam/malware domains.</p>
+<p>In my home network this is roughly 10 - 30% of traffic depending on the part of the day and what devices are active. I find it outrageous that I have to look at ads on a device that I purchased, using my internet connection that I paid for and spend CPU time (producing CO2) to look at completely irrelevant ads, sometimes even malware installers.</p>
+<p>I really like Pihole but it has more dependencies that I am comfortable with (dnsmasq, lighttpd, php, Bootstrap 3.x, etc.).</p>
+<h2 id="apps">Apps</h2>
+<p>The apps currently starting up with Elafi:</p>
+<ul>
+<li>dnscache: dns proxy and recursive resolver</li>
+<li>dnsauth: authoritative nameserver, for lan</li>
+<li>shades: blacklist/whitelist</li>
+<li>webui: settings &amp; monitoring</li>
+<li>dataz: data access using Mnesia</li>
+</ul>
+<h2 id="dependecies">Dependecies</h2>
+<p>I try to not to use any dependecies.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-Elixir" data-lang="Elixir">  defp deps do
+    [
+      {<span style="color:#ed9d13">:elli</span>, <span style="color:#ed9d13">&#34;~&gt; 3.2&#34;</span>}
+    ]
+  end
+</code></pre></div><h3 id="dns">DNS</h3>
+<p>This is the current flow of incoming DNS packets:</p>
+<p><img src="/img/elafi_dns_proxy_flow.png" alt="Dns Proxy Flow"></p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbVURQIFBhY2tldF0gLS0-IEIoPCA1MTMpXG5CKDwgNTEzKSAtLT58WXwgQyhXaGl0ZWxpc3Q_KVxuQig8IDUxMykgLS0-fE58IERbRXJyb3JdXG5DKFdoaXRlbGlzdD8pIC0tPnxZfCBFKExvY2FsPylcbkMoV2hpdGVsaXN0PykgLS0-fE58IEYoQmxhY2tsaXN0PylcbkYoQmxhY2tsaXN0PykgLS0-IHxZfCBHWzAuMC4wLjBdXG5GKEJsYWNrbGlzdD8pIC0tPiB8TnwgRShMb2NhbD8pXG5FKExvY2FsPykgLS0-fFl8IEhbTG9jYWwgQXV0aG9yaXRhdGl2ZV1cbkUoTG9jYWw_KSAtLT58TnwgSShGb3J3YXJkKVxuSShGb3J3YXJkKSAtLT58WXwgSltGb3J3YXJkIFF1ZXJ5IFRvIFVwc3RyZWFtXVxuSltGb3J3YXJkIFF1ZXJ5IFRvIFVwc3RyZWFtXSAtLT4gS1tTZW5kIFJlc3BvbnNlIHRvIFJlcXVlc3Rlcl1cbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9">Link</a></p>
+<h4 id="message-format">Message Format</h4>
+<p>All communications inside of the domain protocol are carried in a single
+format called a message.  The top level format of message is divided
+into 5 sections (some of which are empty in certain cases) shown below:</p>
+<pre><code>+---------------------+
+|        Header       |
++---------------------+
+|       Question      | the question for the name server
++---------------------+
+|        Answer       | RRs answering the question
++---------------------+
+|      Authority      | RRs pointing toward an authority
++---------------------+
+|      Additional     | RRs holding additional information
++---------------------+
+</code></pre>
+<p>Header + Question must be included for both request and reponse. Answer can be compressed with pointers to the question section.</p>
+<p>Example query and response without pointers:</p>
+<pre><code>                     +-----------------------------------------+
+       Header        |          OPCODE=IQUERY, ID=123          |
+                     +-----------------------------------------+
+      Question       |  QTYPE=A, QCLASS=IN, QNAME=WEB.MIT.EDU  |
+                     +-----------------------------------------+
+       Answer        |                 &lt;empty&gt;                 |
+                     +-----------------------------------------+
+      Authority      |                 &lt;empty&gt;                 |
+                     +-----------------------------------------+
+     Additional      |                 &lt;empty&gt;                 |
+                     +-----------------------------------------+
+
+
+                     +-----------------------------------------+
+       Header        |         OPCODE=RESPONSE, ID=123         |
+                     +-----------------------------------------+
+      Question       |  QTYPE=A, QCLASS=IN, QNAME=WEB.MIT.EDU  |
+                     +-----------------------------------------+
+       Answer        |       WEB.MIT.EDU A IN 104.96.143.80    |
+                     +-----------------------------------------+
+      Authority      |                 &lt;empty&gt;                 |
+                     +-----------------------------------------+
+     Additional      |                 &lt;empty&gt;                 |
+                     +-----------------------------------------+                         
+</code></pre>
+<h5 id="pcap">Pcap</h5>
+<ul>
+<li>
+<p>query</p>
+<pre><code>Domain Name System (query)
+    Transaction ID: 0x1483
+    Flags: 0x0100 Standard query
+        0... .... .... .... = Response: Message is a query
+        .000 0... .... .... = Opcode: Standard query (0)
+        .... ..0. .... .... = Truncated: Message is not truncated
+        .... ...1 .... .... = Recursion desired: Do query recursively
+        .... .... .0.. .... = Z: reserved (0)
+        .... .... ...0 .... = Non-authenticated data: Unacceptable
+    Questions: 1
+    Answer RRs: 0
+    Authority RRs: 0
+    Additional RRs: 0
+    Queries
+        rpi4.lan: type A, class IN
+            Name: rpi4.lan
+            [Name Length: 8]
+            [Label Count: 2]
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+</code></pre>
+</li>
+</ul>
+<p>bytes:</p>
+<pre><code>0000   b8 27 eb a8 3d a3 dc a6 32 75 b6 86 08 00 45 00   .'..=...2u....E.
+0010   00 36 13 a2 00 00 40 11 e2 ed c0 a8 01 6e c0 a8   .6....@......n..
+0020   01 69 ae 33 00 35 00 22 34 53 14 83 01 00 00 01   .i.3.5.&quot;4S......
+0030   00 00 00 00 00 00 04 72 70 69 34 03 6c 61 6e 00   .......rpi4.lan.
+0040   00 01 00 01                                       ....
+</code></pre>
+<ul>
+<li>
+<p>response</p>
+<pre><code>Domain Name System (response)
+    Transaction ID: 0x1483
+    Flags: 0x8180 Standard query response, No error
+        1... .... .... .... = Response: Message is a response
+        .000 0... .... .... = Opcode: Standard query (0)
+        .... .0.. .... .... = Authoritative: Server is not an authority for domain
+        .... ..0. .... .... = Truncated: Message is not truncated
+        .... ...1 .... .... = Recursion desired: Do query recursively
+        .... .... 1... .... = Recursion available: Server can do recursive queries
+        .... .... .0.. .... = Z: reserved (0)
+        .... .... ..0. .... = Answer authenticated: Answer/authority portion was not authenticated by the server
+        .... .... ...0 .... = Non-authenticated data: Unacceptable
+        .... .... .... 0000 = Reply code: No error (0)
+    Questions: 1
+    Answer RRs: 1
+    Authority RRs: 0
+    Additional RRs: 0
+    Queries
+        rpi4.lan: type A, class IN
+            Name: rpi4.lan
+            [Name Length: 8]
+            [Label Count: 2]
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+    Answers
+        rpi4.lan: type A, class IN, addr 192.168.1.110
+            Name: rpi4.lan
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+            Time to live: 1489 (24 minutes, 49 seconds)
+            Data length: 4
+            Address: 192.168.1.110
+</code></pre>
+</li>
+</ul>
+<p>bytes:</p>
+<pre><code>  0000   dc a6 32 75 b6 86 b8 27 eb a8 3d a3 08 00 45 00   ..2u...'..=...E.
+  0010   00 46 97 0e 40 00 40 11 1f 71 c0 a8 01 69 c0 a8   .F..@.@..q...i..
+  0020   01 6e 00 35 ae 33 00 32 2b b7 14 83 81 80 00 01   .n.5.3.2+.......
+  0030   00 01 00 00 00 00 04 72 70 69 34 03 6c 61 6e 00   .......rpi4.lan.
+  0040   00 01 00 01 c0 0c 00 01 00 01 00 00 05 d1 00 04   ................
+  0050   c0 a8 01 6e                                       ...n
+</code></pre>
+<h5 id="header">Header</h5>
+<p><a href="https://www.zytrax.com/books/dns/ch15/#header">https://www.zytrax.com/books/dns/ch15/#header</a></p>
+<h5 id="question">Question</h5>
+<p><a href="https://www.zytrax.com/books/dns/ch15/#question">https://www.zytrax.com/books/dns/ch15/#question</a></p>
+<h5 id="answer">Answer</h5>
+<p><a href="https://www.zytrax.com/books/dns/ch15/#answer">https://www.zytrax.com/books/dns/ch15/#answer</a></p>
+<h5 id="authority">Authority</h5>
+<p><a href="https://www.zytrax.com/books/dns/ch15/#authority">https://www.zytrax.com/books/dns/ch15/#authority</a></p>
+<h5 id="additional">Additional</h5>
+<p><a href="https://www.zytrax.com/books/dns/ch15/#additional">https://www.zytrax.com/books/dns/ch15/#additional</a></p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.ietf.org/rfc/rfc1035.txt">https://www.ietf.org/rfc/rfc1035.txt</a></li>
+<li><a href="https://www.zytrax.com/books/dns/ch15/">https://www.zytrax.com/books/dns/ch15/</a></li>
+<li><a href="https://www2.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf">https://www2.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf</a></li>
+</ul>
+
+  </div>
+
+
+  </div>
+</body>
+<footer class="mw8-l center pa3">
+
+  <a href="https://github.com/l1x" class="pa2">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+
+  <a href="https://twitter.com/lix" class="pa2">
+    <i class="fab fa-twitter fa-2x"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/iszukacs" class="pa2">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+    
+  <a href="https://dev.to/l1x" class="pa2">
+    <i class="fab fa-dev fa-2x"></i>
+  </a>
+
+</footer>
+</html>

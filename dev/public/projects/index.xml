@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on l1x/dev</title><link>http://dev.l1x.be/projects/</link><description>Recent content in Projects on l1x/dev</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 13 May 2020 14:31:21 +0200</lastBuildDate><atom:link href="http://dev.l1x.be/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>CloudClamp</title><link>http://dev.l1x.be/project/cloudclamp/</link><pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/project/cloudclamp/</guid><description>CloudClamp Type safe infrastructure as code with the full power of F#.
-Why? I am tired of dealing with configuration files and interpreters that has the expresiveness of Go, safetiness of C and performance of Ruby. Illegal configuration must be made impossible by the type system. ADTs are great for this. Compilation has to check as much as possible and using all language features is a must. C# has libraries for pretty much every single vendor out there or it is trivial to implement the lacking support.</description></item><item><title>Elafi</title><link>http://dev.l1x.be/project/elafi/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/project/elafi/</guid><description>Elixir Ads Filter (ελάφι) ελάφι
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on l1x/dev</title>
+    <link>http://dev.l1x.be/projects/</link>
+    <description>Recent content in Projects on l1x/dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 May 2020 14:31:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://dev.l1x.be/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CloudClamp</title>
+      <link>http://dev.l1x.be/projects/cloudclamp/</link>
+      <pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/projects/cloudclamp/</guid>
+      <description>CloudClamp Type safe infrastructure as code with the full power of F#.
+Why? I am tired of dealing with configuration files and interpreters that has the expresiveness of Go, safetiness of C and performance of Ruby. Illegal configuration must be made impossible by the type system. ADTs are great for this. Compilation has to check as much as possible and using all language features is a must. C# has libraries for pretty much every single vendor out there or it is trivial to implement the lacking support.</description>
+    </item>
+    
+    <item>
+      <title>Elafi</title>
+      <link>http://dev.l1x.be/projects/elafi/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/projects/elafi/</guid>
+      <description>Elixir Ads Filter (ελάφι) ελάφι
 What is this? Elafi is a DNS proxy that filters out unwanted content by returning 0.0.0.0 to the A and ::/0 to AAAA requests that try to resolve ad/spam/malware domains.
-In my home network this is roughly 10 - 30% of traffic depending on the part of the day and what devices are active. I find it outrageous that I have to look at ads on a device that I purchased, using my internet connection that I paid for and spend CPU time (producing CO2) to look at completely irrelevant ads, sometimes even malware installers.</description></item></channel></rss>
+In my home network this is roughly 10 - 30% of traffic depending on the part of the day and what devices are active. I find it outrageous that I have to look at ads on a device that I purchased, using my internet connection that I paid for and spend CPU time (producing CO2) to look at completely irrelevant ads, sometimes even malware installers.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on l1x/dev</title>
+    <link>http://dev.l1x.be/tags/go/</link>
+    <description>Recent content in go on l1x/dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 May 2020 14:31:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://dev.l1x.be/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Starting with Hugo, the hard way</title>
+      <link>http://dev.l1x.be/posts/2020/05/12/starting-with-hugo-the-hard-way/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/posts/2020/05/12/starting-with-hugo-the-hard-way/</guid>
+      <description>After many years on Jekyll I think the time is right to move to Hugo. Hugo is a static site generator written in Go using Liquid templating. After working with Hugo for couple of days, here are the pros and cons.
+Pros:
+ fast lots of functionality built in  Cons:
+ documentation is useless for starters it is not intuitive what is going on most how-to start with using a complex template  Based on these I this it is worth to write up how to get started.</description>
+    </item>
+    
+  </channel>
+</rss>

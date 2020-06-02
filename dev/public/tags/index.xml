@@ -1,1 +1,168 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on l1x/dev</title><link>http://dev.l1x.be/tags/</link><description>Recent content in Tags on l1x/dev</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 14:31:21 +0200</lastBuildDate><atom:link href="http://dev.l1x.be/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>energy</title><link>http://dev.l1x.be/tags/energy/</link><pubDate>Mon, 01 Jun 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/energy/</guid><description/></item><item><title>nuclear</title><link>http://dev.l1x.be/tags/nuclear/</link><pubDate>Mon, 01 Jun 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/nuclear/</guid><description/></item><item><title>aws</title><link>http://dev.l1x.be/tags/aws/</link><pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/aws/</guid><description/></item><item><title>cloud</title><link>http://dev.l1x.be/tags/cloud/</link><pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/cloud/</guid><description/></item><item><title>fsharp</title><link>http://dev.l1x.be/tags/fsharp/</link><pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/fsharp/</guid><description/></item><item><title>beam</title><link>http://dev.l1x.be/tags/beam/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/beam/</guid><description/></item><item><title>data</title><link>http://dev.l1x.be/tags/data/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/data/</guid><description/></item><item><title>elixir</title><link>http://dev.l1x.be/tags/elixir/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/elixir/</guid><description/></item><item><title>erlang</title><link>http://dev.l1x.be/tags/erlang/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/erlang/</guid><description/></item><item><title>iot</title><link>http://dev.l1x.be/tags/iot/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/iot/</guid><description/></item><item><title>optimization</title><link>http://dev.l1x.be/tags/optimization/</link><pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/optimization/</guid><description/></item><item><title>dotnet</title><link>http://dev.l1x.be/tags/dotnet/</link><pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/dotnet/</guid><description/></item><item><title>lambda</title><link>http://dev.l1x.be/tags/lambda/</link><pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/lambda/</guid><description/></item><item><title>serverless</title><link>http://dev.l1x.be/tags/serverless/</link><pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate><guid>http://dev.l1x.be/tags/serverless/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on l1x/dev</title>
+    <link>http://dev.l1x.be/tags/</link>
+    <description>Recent content in Tags on l1x/dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jun 2020 14:31:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://dev.l1x.be/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>energy</title>
+      <link>http://dev.l1x.be/tags/energy/</link>
+      <pubDate>Mon, 01 Jun 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/energy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nuclear</title>
+      <link>http://dev.l1x.be/tags/nuclear/</link>
+      <pubDate>Mon, 01 Jun 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/nuclear/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws</title>
+      <link>http://dev.l1x.be/tags/aws/</link>
+      <pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cloud</title>
+      <link>http://dev.l1x.be/tags/cloud/</link>
+      <pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fsharp</title>
+      <link>http://dev.l1x.be/tags/fsharp/</link>
+      <pubDate>Wed, 13 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/fsharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beam</title>
+      <link>http://dev.l1x.be/tags/beam/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/beam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data</title>
+      <link>http://dev.l1x.be/tags/data/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elixir</title>
+      <link>http://dev.l1x.be/tags/elixir/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/elixir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>erlang</title>
+      <link>http://dev.l1x.be/tags/erlang/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/erlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>http://dev.l1x.be/tags/go/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>http://dev.l1x.be/tags/hugo/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iot</title>
+      <link>http://dev.l1x.be/tags/iot/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>liquid</title>
+      <link>http://dev.l1x.be/tags/liquid/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/liquid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>http://dev.l1x.be/tags/optimization/</link>
+      <pubDate>Tue, 12 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dotnet</title>
+      <link>http://dev.l1x.be/tags/dotnet/</link>
+      <pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/dotnet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lambda</title>
+      <link>http://dev.l1x.be/tags/lambda/</link>
+      <pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>serverless</title>
+      <link>http://dev.l1x.be/tags/serverless/</link>
+      <pubDate>Fri, 08 May 2020 14:31:21 +0200</pubDate>
+      
+      <guid>http://dev.l1x.be/tags/serverless/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

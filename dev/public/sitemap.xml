@@ -1,1 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>http://dev.l1x.be/tags/energy/</loc><lastmod>2020-06-01T14:31:21+02:00</lastmod></url><url><loc>http://dev.l1x.be/posts/2020/06/01/how-long-will-the-worlds-uranium-supplies-last/</loc><lastmod>2020-06-01T14:31:21+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/nuclear/</loc><lastmod>2020-06-01T14:31:21+02:00</lastmod></url><url><loc>http://dev.l1x.be/posts/</loc><lastmod>2020-06-01T14:31:21+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/aws/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/cloud/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/project/cloudclamp/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/fsharp/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/projects/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/beam/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/data/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/project/elafi/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/elixir/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/erlang/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/iot/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/optimization/</loc><lastmod>2020-06-01T22:44:08+02:00</lastmod></url><url><loc>http://dev.l1x.be/about/</loc><lastmod>2020-05-13T22:16:31+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/dotnet/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/lambda/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/tags/serverless/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/posts/2020/05/08/why-i-chose-fsharp-for-our-aws-lambda-project/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url><url><loc>http://dev.l1x.be/posts/2020/04/29/matching-binary-patterns/</loc><lastmod>2020-05-29T16:48:13+02:00</lastmod></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/energy/</loc>
+    <lastmod>2020-06-01T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/2020/06/01/how-long-will-the-worlds-uranium-supplies-last/</loc>
+    <lastmod>2020-06-01T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/nuclear/</loc>
+    <lastmod>2020-06-01T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/</loc>
+    <lastmod>2020-06-01T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/</loc>
+    <lastmod>2020-06-01T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/aws/</loc>
+    <lastmod>2020-05-13T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/cloud/</loc>
+    <lastmod>2020-05-13T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/projects/cloudclamp/</loc>
+    <lastmod>2020-05-13T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/fsharp/</loc>
+    <lastmod>2020-05-13T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/projects/</loc>
+    <lastmod>2020-05-13T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/beam/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/data/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/projects/elafi/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/elixir/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/erlang/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/go/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/hugo/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/iot/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/liquid/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/optimization/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/2020/05/12/starting-with-hugo-the-hard-way/</loc>
+    <lastmod>2020-05-12T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/about/</loc>
+    <lastmod>2020-05-12T22:02:43+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/dotnet/</loc>
+    <lastmod>2020-05-08T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/lambda/</loc>
+    <lastmod>2020-05-08T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/tags/serverless/</loc>
+    <lastmod>2020-05-08T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/2020/05/08/why-i-chose-fsharp-for-our-aws-lambda-project/</loc>
+    <lastmod>2020-05-08T14:31:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dev.l1x.be/posts/2020/04/29/matching-binary-patterns/</loc>
+    <lastmod>2020-04-29T14:31:21+02:00</lastmod>
+  </url>
+  
+</urlset>

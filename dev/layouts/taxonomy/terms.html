@@ -1,0 +1,20 @@
+{{ define "main"}}
+  <section>
+    <h2 class="title">Tags</h2>
+    
+      {{ range .Data.Terms.Alphabetical }}
+            
+          <a href="{{ .Page.Permalink }}" class="link dim pa2">
+            <span class="lh-copy f2">
+            #{{ .Page.Title }}
+            </span>
+            <span class="">
+              {{ .Count }}
+            </span>
+          </a>
+        
+    
+      {{ end }}
+    
+    </section>
+{{ end }}

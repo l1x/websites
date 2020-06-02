@@ -1,17 +1,15 @@
 {{ define "main"}}
 
-  <div class="">
-    <section>
+    <section class="pt2">
+
       <h2>
         <a href="/posts" class="title link">Posts</a>
       </h2>
-      <div class="f3">
-        The posts I have written:
-      </div>
+            
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "posts") -}}
         <li class="pb2">
-          <a href={{ .RelPermalink }} class="link dim"> 
+          <a href={{ .RelPermalink }} class="link dim f3 lh-copy"> 
             {{ dateFormat "2006/01/02" .Date }} :: {{ .Title }} 
           </a>
           <div class="pt1">
@@ -22,19 +20,16 @@
       </ul>
     </section>
     
-    <section>
+    <section class="">
+
       <h2>
         <a href="/projects" class="title link">Projects</a>
       </h2>
 
-      <div class="f3">
-        The projects I have been working on:
-      </div>
-
       <ul class="list pl0">
         {{- range first 10 (where .Site.RegularPages "Section" "projects").ByDate -}}
         <li class="pb2"> 
-          <a href={{ .RelPermalink }} class="link dim"> 
+          <a href={{ .RelPermalink }} class="link dim f3 lh-copy"> 
             {{ .Title }} :: {{ .Description }} 
           </a>
           <div class="pt1">
@@ -43,7 +38,8 @@
         </li>
         {{end}}
       </ul>
+
     </section>
-  </div>
+
 
 {{ end }}

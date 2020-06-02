@@ -1,0 +1,17 @@
+{{ define "main"}}
+
+  <section>
+
+    <h2 class="title">Tag: {{ .Title }}</h2>
+    {{ range .Pages }}
+      <div class="f2">
+        <a href="{{ .Permalink }}" class="link dim lh-copy">{{ .Title }}</a>
+      </div>
+      <div>
+        <time>{{ .Date.Format (.Site.Params.dateform | default "2006/January/1") }}</time>
+      </div>    
+    {{ end }}
+
+  </section>
+
+{{ end }}
