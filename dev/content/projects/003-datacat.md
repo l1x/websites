@@ -1,7 +1,7 @@
 ---
 title: "Data-cat"
 date: 2019-11-01T14:31:21+02:00
-description: "Deploying DataDog for a large scale infrastructur"
+description: "Deploying DataDog for a large scale infrastructure"
 number: 3
 tags:
     - python
