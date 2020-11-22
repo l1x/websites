@@ -2,10 +2,10 @@
 title: Getting started with Firecracker on Raspberry Pi
 date: 2020-11-22T14:25:21+01:00
 draft: false
-description: Firecracker is an open source virtualization technology for creating and managing secure, multi-tenant container services.
+description: Firecracker is an open source virtualisation technology for creating and managing secure, multi-tenant container services.
 tags:
-  - containerization
-  - virtualization
+  - containerisation
+  - virtualisation
   - linux
   - cgroups
   - cloud
@@ -13,11 +13,11 @@ tags:
 
 ## Abstract
 
-Traditionally services were deployed on bare metal and in the last decades we have seen the rise of virtualization (running additional operating systems in a operating system process) and lately containerization (running an operating system process in a separate security context from the rest of processes on the same host). Virtualization and containerization offers different levels of isolation by moving some operating system functionality to the guest systems.
+Traditionally services were deployed on bare metal and in the last decades we have seen the rise of virtualisation (running additional operating systems in a operating system process) and lately containerisation (running an operating system process in a separate security context from the rest of processes on the same host). Virtualisation and containerisation offers different levels of isolation by moving some operating system functionality to the guest systems.
 
 The following chart illustrates that pretty well:
 
-![OS functionality location](/img/isolation.png)
+![OS functionality location](https://dev.l1x.be/img/isolation.png)
 
 Source: https://research.cs.wisc.edu/multifacet/papers/vee20_blending.pdf
 
@@ -25,28 +25,28 @@ In this article, I perform a deep dive into Firecracker and how it can be used f
 
 ## Getting started
 
-There are few paths to take here. First I am going to try the easy one, using Ubuntu. Later on we can investigate the use of Alpine Linux which is much more leightweight than Ubuntu, ideal for devices like RPI.
+There are few paths to take here. First I am going to try the easy one, using Ubuntu. Later on we can investigate the use of Alpine Linux which is much more lightweight than Ubuntu, ideal for devices like RPI.
 
 ### Installing the image on a microSD card
 
 We need a 64 bit Ubuntu image and a microsd card. For the imaging I use [Balena Etcher](https://www.balena.io/etcher/) that makes the imaging process super easy.
 
-Getting the presintalled image:
+Getting the pre-installed image:
 
 ```bash
 wget https://cdimage.ubuntu.com/releases/20.04/release/\
 ubuntu-20.04.1-preinstalled-server-arm64+raspi.img.xz
 ```
 
-Preinstalled means that we get a fully working operating system and there is no need for additional installation steps after booting up. With Balena Etcher it is super easy to write the comressed image file to the sd card and boot the system up once ready. SSHD starts up after the installation and we can log in via ssh if we know the IP address that the DHCP server issues to our device (assuming DHCP server is present in our LAN).
+Preinstalled means that we get a fully working operating system and there is no need for additional installation steps after booting up. With Balena Etcher it is super easy to write the compressed image file to the sd card and boot the system up once ready. SSHD starts up after the installation and we can log in via ssh if we know the IP address that the DHCP server issues to our device (assuming DHCP server is present in our LAN).
 
-There are few midly annoying things with Ubuntu (snaps, unattended-upgrades) that I usually remove. I also prefer to use Chrony over the systemd equivalent. Ansible repo for these is available here: https://github.com/l1x/rpi/blob/main/ubuntu.20/ansible/roles/os/tasks/main.yml
+There are few mildly annoying things with Ubuntu (snaps, unattended-upgrades) that I usually remove. I also prefer to use Chrony over the systemd equivalent. Ansible repo for these is available here: https://github.com/l1x/rpi/blob/main/ubuntu.20/ansible/roles/os/tasks/main.yml
 
 ### Installing Firecracker, Jailer and Firectl
 
 - Firecracker: The main component, it is a virtual machine monitor (VMM) that uses the Linux Kernel Virtual Machine (KVM) to create and run microVMs.
 - Jailer: For starting Firecracker in production mode, applies a cgroup/namespace isolation barrier and then drops privileges. There
-- Firectl: A command line utility for convinience
+- Firectl: A command line utility for convenience
 
 #### Getting Firecracker and Jailer
 
