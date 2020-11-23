@@ -16,7 +16,7 @@ paginate = 10
 
 [taxonomies]
   tag = "tags"
-  
+
 [markup]
   [markup.highlight]
     codeFences = true
@@ -26,6 +26,6 @@ paginate = 10
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "native"
+    style = "monokailight"
     tabWidth = 2
 

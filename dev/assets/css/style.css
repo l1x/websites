@@ -1,20 +1,22 @@
-body, input {
+body,
+input {
   font-family: "Dosis", -apple-system, BlinkMacSystemFont, "avenir next", avenir,
     "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
     sans-serif;
-  background-color: #1d1f21;
+  background-color: #f8f7f6;
 }
 
-h1, .title {
+h1,
+.title {
   color: #fc8c04;
 }
 
 h2 {
-  color:#F8F8FF;
+  color: #1d1f21;
 }
 .post-title {
-  color: #fcc47b;
+  color: #1d1f21;
 }
 * {
-  color: #D3D3D3;
+  color: #010100;
 }

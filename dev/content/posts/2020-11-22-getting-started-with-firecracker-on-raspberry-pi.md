@@ -142,7 +142,9 @@ sudo ./firectl/firectl \
 --firecracker-binary=./firecracker \
 --kernel=vmlinux.bin \
 --tap-device=tap0/aa:fc:00:00:00:01 \
---kernel-opts="console=ttyS0 reboot=k panic=1 pci=off ip=172.16.0.42::172.16.0.1:255.255.255.0::eth0:off" \
+--kernel-opts=\
+"console=ttyS0 reboot=k panic=1 pci=off \
+ip=172.16.0.42::172.16.0.1:255.255.255.0::eth0:off" \
 --root-drive=./xenial.rootfs.ext4
 ```
 

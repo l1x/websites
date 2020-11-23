@@ -1,15 +1,9 @@
-{{ define "main"}}
-  
-  {{- if .Title -}}
-    <h2 class="post-title"> {{ .Title | htmlEscape }} </h2>
-  {{ end }}
-
-  {{- if .Date -}}
-    <div class="white"> {{ dateFormat "2006/01/02" .Date }} :: #{{ delimit .Params.tags " #" }} </div> 
-  {{ end }}
-
-  <div class="f4 lh-copy">
-    {{ .Content }}
-  </div>
-
+{{ define "main"}} {{- if .Title -}}
+<h2 class="post-title">{{ .Title | htmlEscape }}</h2>
+{{ end }} {{- if .Date -}}
+<div class="gray">
+  {{ dateFormat "2006/01/02" .Date }} :: #{{ delimit .Params.tags " #" }}
+</div>
+{{ end }}
+<div class="f4 lh-copy">{{ .Content }}</div>
 {{ end }}
