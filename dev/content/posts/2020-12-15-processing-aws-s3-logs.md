@@ -1,7 +1,7 @@
 ---
 title: Getting started with Firecracker on Raspberry Pi
 date: 2020-11-22T14:25:21+01:00
-draft: false
+draft: true
 description: Firecracker is an open source virtualisation technology for creating and managing secure, multi-tenant container services.
 tags:
   - containerisation
@@ -10,11 +10,6 @@ tags:
   - cgroups
   - cloud
 ---
-
-## Article Series
-
-1st part :: this
-2nd part :: https://dev.l1x.be/posts/2020/11/22/getting-started-with-firecracker-on-raspberry-pi/
 
 ## Abstract
 
