@@ -13,8 +13,8 @@ tags:
 
 ## Article Series
 
-1st part :: this
-2nd part :: https://dev.l1x.be/posts/2020/11/22/getting-started-with-firecracker-on-raspberry-pi/
+- 1st part :: this
+- 2nd part :: https://dev.l1x.be/posts/2020/12/13/diving-into-firecracker-with-alpine/
 
 ## Abstract
 
