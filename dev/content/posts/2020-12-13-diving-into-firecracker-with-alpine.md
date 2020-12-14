@@ -18,19 +18,19 @@ tags:
 
 ## Intro
 
-Last time in the 1st article I briefly introduced Firecracker as a lightweight virtualization / continerization solution for extreme scale (like AWS Lambda functions). This time around I am going to dig a bit deeper into the API and the management of microVMs. I am going to install Alpine on RPI, install Rust and Python, Docker, get the Linux kernel source and compile a new kernel with minimal config, compile our own Firecracker and then create a new rootfs to be able to boot up a guest. Most of these steps are optional, you can use the stock kernel the Firecracker team provides or download Firecracker release from Github.
+Last time in the 1st article I briefly introduced Firecracker as a lightweight virtualization/containerization solution for extreme-scale (like AWS Lambda functions). This time around I am going to dig a bit deeper into the API and the management of microVMs. I am going to install Alpine on RPI, install Rust and Python, Docker, get the Linux kernel source and compile a new kernel with minimal config, compile our own Firecracker and then create a new rootfs to be able to boot up a guest. Most of these steps are optional, you can use the stock kernel the Firecracker team provides or download Firecracker release from Github.
 
 ## Setup Alpine
 
 If you do not care about Alpine on RPI you can jump to the Firecracker section.
 
-I would like to keep going with [Raspberry Pi 4B 8GB](https://amzn.to/2Klb9fx) or [Raspberry Pi 4B 4GB](https://amzn.to/2KeohTO) for many reasons. It is a small system that you can easily hack on without any change on your desktop. It is also an ARM64 (ARM Cortex-A72) system that has great performance even without active cooling. I usually use it with a [alu case](https://amzn.to/3naOS2L) that provides the best heat dispersion and a cool cpu. It has enough CPU power and memory to compile any software including Firecracker, the Linux kernel and more. Since this project is a side project I don't care how long it takes to finish a new kernel, usually finishes within 2 hours (I might get exact timing later).
+I would like to keep going with [Raspberry Pi 4B 8GB](https://amzn.to/2Klb9fx) or [Raspberry Pi 4B 4GB](https://amzn.to/2KeohTO) for many reasons. It is a small system that you can easily hack on without any change on your desktop. It is also an ARM64 (ARM Cortex-A72) system that has great performance even without active cooling. I usually use it with a [alu case](https://amzn.to/3naOS2L) that provides the best heat dispersion and a cool CPU. It has enough CPU power and memory to compile any software including Firecracker, the Linux kernel, and more. Since this project is a side project I don't care how long it takes to finish a new kernel, usually finishes within 2 hours (I might get exact timing later).
 
-Another item on my todo list is to get Alpine Linux as both the host and the guest system. For those who do not know Alpine is a small Linux distribution designed for security, simplicity, and resource efficiency. It comes with sane defaults and Musl as its C standard library. Alpine uses its own package-management system, apk-tools, providing super fast package installation. Alpine allows very small system with the minimal installation being be around 130 MB. The init system is the lightweight OpenRC, Alpine does not use systemd. This was the primary reason I wanted to get into Alpine.
+Another item on my to-do list is to get Alpine Linux as both the host and the guest system. For those who do not know Alpine is a small Linux distribution designed for security, simplicity, and resource efficiency. It comes with sane defaults and Musl as its C standard library. Alpine uses its own package management system, apk-tools, providing super-fast package installation. Alpine allows a very small system with minimal installation being around 130 MB. The init system is the lightweight OpenRC, Alpine does not use systemd. This was the primary reason I wanted to get into Alpine.
 
 ### Installing Alpine on RPI 4
 
-This is the most complicated part of the setup because RPI has a special boot procedure that uses a FAT partition and the GPU. When installing Alpine first you need to create a FAT partition on the beginning of the SD card with MBR. I am using MacOS this time. I am pretty sure it is easy to translate this to Linux (not sure about Windows).
+This is the most complicated part of the setup because RPI has a special boot procedure that uses a FAT partition and the GPU. When installing Alpine first you need to create a FAT partition at the beginning of the SD card with MBR. I am using MacOS this time. I am pretty sure it is easy to translate this to Linux (not sure about Windows.)
 
 #### Creating the partition
 
@@ -58,7 +58,7 @@ tar xzvf alpine-rpi-3.12.1-aarch64.tar.gz -C /Volumes/ALP/
 
 #### Configuring RPI boot
 
-This part is optional, you can disable audio, wifi, bluetooth, etc and enable UART, configure GPU mem. The full documentation is here:
+This part is optional, you can disable audio, wifi, Bluetooth, etc and enable UART, configure GPU mem. The full documentation is here:
 
 https://www.raspberrypi.org/documentation/configuration/config-txt/
 
@@ -84,13 +84,13 @@ After inserting the SD card into the RPI you can boot it up. I am using a specia
 
 Once the device is booting up you can login with root (no password).
 
-Alpine has a neat tool to configure a new system. It asks few questions about keyboard layout and timezone, also makes you create a root password.
+Alpine has a neat tool to configure a new system. It asks a few questions about keyboard layout and timezone, also makes you create a root password.
 
 ```bash
 setup-alpine
 ```
 
-Once setup-alpine is done you need to change few things around because up to this moment you operated on the FAT partition. After updating the system and adding cfdisk you can create a new partition and use the remaning space on the SD card to have a proper system. In cfdisk, select “Free space” and the option “New”. It suggests using the entire available space, just press enter, then select the option “primary”, followed by “Write”. Type “yes” to write the partition table to disk, then select “Quit”.
+Once setup-alpine is done you need to change a few things around because up to this moment you operated on the FAT partition. After updating the system and adding cfdisk you can create a new partition and use the remaining space on the SD card to have a proper system. In cfdisk, select “Free space” and the option “New”. It suggests using the entire available space, just press enter, then select the option “primary”, followed by “Write”. Type “yes” to write the partition table to disk, then select “Quit”.
 
 ```bash
 apk update
@@ -183,7 +183,7 @@ Changing my shell to fish:
 l1x:x:1000:1000:Linux User,,,:/home/l1x:/usr/bin/fish
 ```
 
-Hopefully by now you have a working envirment. I use a bigger drive for /data where I store all the development folders.
+Hopefully, by now you have a working environment. I use a bigger drive for /data where I store all the development folders.
 
 ```bash
 l1x@alpine ~> mount | column -t | egrep '^/dev'
@@ -206,7 +206,7 @@ I was trying to figure out how to install Rust on ARM64 linux and the most strai
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-If you want to compile Firecracker yourself you also need Docker. Docker for this version of Alpine lives in the community repo. Simple append the community line to your repositories:
+If you want to compile Firecracker yourself you also need Docker. Docker for this version of Alpine lives in the community repo. Simply append the community line to your repositories:
 
 ```bash
 cat /etc/apk/repositories
@@ -269,15 +269,15 @@ Using these binaries we can create the VMs.
 
 ## Creating a microVM
 
-Before getting started, there are multiple ways to start a microVM with Firecracker. Here are few:
+Before getting started, there are multiple ways to start a microVM with Firecracker. Here are a few:
 
-- starting up the Firecracker binary and through the unix socket configure it and then start a VM
-- starting Firecracker with a complete VM config without the unix socket API
+- starting up the Firecracker binary and through the Unix socket configure it and then start a VM
+- starting Firecracker with a complete VM config without the Unix socket API
 - starting Firecracker with Jailer so it uses cgroups to containerize the VM
 
 We are going to check out the first way.
 
-When I started to fiddle with FC I was trying to use the official CLI (Firectl) and because it is written in Go you need to have a Go compiler of you would like to build it yourself. I did not like this option to much so I have created a new CLI called [Pattacu](https://github.com/l1x/pattacu) written in Python.
+When I started to fiddle with FC I was trying to use the official CLI (Firectl) and because it is written in Go you need to have a Go compiler if you would like to build it yourself. I did not like this option too much so I have created a new CLI called [Pattacu](https://github.com/l1x/pattacu) written in Python.
 
 ### Compiling a new kernel
 
@@ -287,7 +287,7 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/rootfs-and-k
 
 If you decided to compile a new Linux kernel there are few things you need to have.
 
-- kernel source
+- kernel-source
 - tools to compile
 
 I usually use one of the long term releases:
@@ -296,7 +296,7 @@ I usually use one of the long term releases:
 - https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.163.tar.xz
 - https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.83.tar.xz
 
-After extracting the kernel source to a folder you can grab the config I have prepared with some help from a OpenWrt developer:
+After extracting the kernel source to a folder you can grab the config I have prepared with some help from an OpenWrt developer:
 
 ```bash
 wget https://raw.githubusercontent.com/l1x/pattacu/main/kernel-config/microvm-kernel-arm64.4.19.config -O .config
@@ -313,17 +313,9 @@ With these the kernel can be compiled:
 ```bash
 make olddefconfig
 time make Image.gz
-...
-  OBJCOPY arch/arm64/boot/Image
-  GZIP    arch/arm64/boot/Image.gz
-
-________________________________________________________
-Executed in  100.14 mins   fish           external
-   usr time   94.21 mins  1547.00 micros   94.21 mins
-   sys time    5.70 mins    0.00 micros    5.70 mins
 ```
 
-This is going to take a while (~100 mins). After that the kernel file we need for the microVM will be arch/arm64/boot/Image.
+This is going to take a while. After that, the kernel file we need for the microVM will be arch/arm64/boot/Image.
 
 ### Creating a new rootfs
 
@@ -331,7 +323,7 @@ This is optional. You can download the official rootfs from Firecracker:
 
 https://github.com/firecracker-microvm/firecracker/blob/master/docs/rootfs-and-kernel-setup.md
 
-There is a project that can be used to create an Alpine rootfs. With a bit of additional shell scripting we can create a customized rootfs that can boot up in Firecracker.
+There is a project that can be used to create an Alpine rootfs. With a bit of additional shell scripting, we can create a customized rootfs that can boot up in Firecracker.
 
 ```bash
 wget https://raw.githubusercontent.com/alpinelinux/alpine-make-rootfs/v0.5.1/alpine-make-rootfs -O alpine-make-rootfs \
@@ -530,11 +522,11 @@ Kernel 4.20.0 on an aarch64 (ttyS0)
 172 login: root
 Welcome to Alpine!
 
-The Alpine Wiki contains a large amount of how-to guides and general
+The Alpine Wiki contains a large number of how-to guides and general
 information about administrating Alpine systems.
 See <http://wiki.alpinelinux.org/>.
 
-You can setup the system with the command: setup-alpine
+You can set up the system with the command: setup-alpine
 
 You may change this message by editing /etc/motd.
 
