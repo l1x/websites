@@ -18,6 +18,10 @@ paginate = 10
   tag = "tags"
 
 [markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
   [markup.highlight]
     codeFences = true
     guessSyntax = false

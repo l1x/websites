@@ -2,11 +2,12 @@
 <h2 class="post-title">{{ .Title | htmlEscape }}</h2>
 {{ end }} {{- if .Date -}}
 
-<aside>{{ .TableOfContents }}</aside>
-
 <div class="gray">
   {{ dateFormat "2006/01/02" .Date }} :: #{{ delimit .Params.tags " #" }}
 </div>
+
+<div class="toc">{{ .TableOfContents }}</div>
+
 {{ end }}
 <div class="f4 lh-copy">{{ .Content }}</div>
 {{ end }}

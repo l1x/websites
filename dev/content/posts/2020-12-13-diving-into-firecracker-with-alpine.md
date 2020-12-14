@@ -30,7 +30,7 @@ Another item on my todo list is to get Alpine Linux as both the host and the gue
 
 ### Installing Alpine on RPI 4
 
-This is the most complicated part of the setup because RPI has a special boot procedure that uses a FAT partition and the GPU. When installing Alpine first you need to create a FAT partition on the beginning of the SD card with MBR. I am using MacOS this time. I am pretty sure it is easy to translate this to Linux (not sure about Windows.)
+This is the most complicated part of the setup because RPI has a special boot procedure that uses a FAT partition and the GPU. When installing Alpine first you need to create a FAT partition on the beginning of the SD card with MBR. I am using MacOS this time. I am pretty sure it is easy to translate this to Linux (not sure about Windows).
 
 #### Creating the partition
 
@@ -313,9 +313,17 @@ With these the kernel can be compiled:
 ```bash
 make olddefconfig
 time make Image.gz
+...
+  OBJCOPY arch/arm64/boot/Image
+  GZIP    arch/arm64/boot/Image.gz
+
+________________________________________________________
+Executed in  100.14 mins   fish           external
+   usr time   94.21 mins  1547.00 micros   94.21 mins
+   sys time    5.70 mins    0.00 micros    5.70 mins
 ```
 
-This is going to take a while. After that the kernel file we need for the microVM will be arch/arm64/boot/Image.
+This is going to take a while (~100 mins). After that the kernel file we need for the microVM will be arch/arm64/boot/Image.
 
 ### Creating a new rootfs
 
