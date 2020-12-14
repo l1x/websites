@@ -17,6 +17,13 @@ h2 {
 .post-title {
   color: #1d1f21;
 }
+
+pre {
+  border: 1px solid rgb(158, 158, 158);
+  padding: 0.25em;
+  overflow-x: auto;
+}
+
 * {
   color: #010100;
 }

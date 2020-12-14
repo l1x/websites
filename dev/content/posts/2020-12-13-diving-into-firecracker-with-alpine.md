@@ -508,8 +508,7 @@ guest_mac='AA:FC:00:00:00:01', host_dev_name='tap0', iface_id='eth0')
 You can switch to the other tmux window and see the system booting up.
 
 ```bash
-[    1.739745] random: fast init done                                                                                                                            [27/1844]
- [ ok ]
+[    1.739745] random: fast init done [27/1844] [ ok ]
  * Mounting /sys ... [ ok ]
  * Mounting security filesystem ... [ ok ]
  * Mounting debug filesystem ... [ ok ]
