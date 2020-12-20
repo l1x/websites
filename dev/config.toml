@@ -30,6 +30,6 @@ paginate = 10
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "monokailight"
+    style = "tango"
     tabWidth = 2
 
