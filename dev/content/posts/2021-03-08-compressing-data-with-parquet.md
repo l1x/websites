@@ -116,7 +116,16 @@ Next step I just looked into the fields (skipping the snippet part):
 
 
 ```SQL
-sqlite> SELECT id, language, repo_file_name, github_repo_url, license, commit_hash, starting_line_number, chunk_size FROM snippets LIMIT 10;
+sqlite> SELECT id
+  , language
+  , repo_file_name
+  , github_repo_url
+  , license
+  , commit_hash
+  , starting_line_number
+  , chunk_size
+FROM snippets
+LIMIT 10;
 id          language    repo_file_name            github_repo_url                   license     commit_hash                               starting_line_number  chunk_size
 ----------  ----------  ------------------------  --------------------------------  ----------  ----------------------------------------  --------------------  ----------
 491         DOTFILE     NodeBB/NodeBB/.gitignore  https://github.com/NodeBB/NodeBB  GPL-3.0     21634e2681fb1329bcbab7b2e19418ebdb1012e1  65                    5
